@@ -1,115 +1,429 @@
-import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
+import { useState } from "react";
+import { Fira_Code } from "next/font/google";
+import { getAllContent } from "@/lib/mdx";
+import { Card } from "@/components/retroui/Card";
+import { Button } from "@/components/retroui/Button";
+import { Badge } from "@/components/retroui/Badge";
+import { Github, ExternalLink, Mail, Linkedin, Download, Calendar, ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import { GetStaticProps } from "next";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const firaCode = Fira_Code({
+  variable: "--font-fira-code",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+interface HomeProps {
+  experience: any[];
+  projects: any[];
+  research: any[];
+}
 
-export default function Home() {
+export default function Home({ experience, projects, research }: HomeProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [expandedProjects, setExpandedProjects] = useState<{ [key: number]: boolean }>({});
+  const projectsPerPage = 4;
+  
+  // Calculate pagination
+  const totalPages = Math.ceil(projects.length / projectsPerPage);
+  const startIndex = (currentPage - 1) * projectsPerPage;
+  const endIndex = startIndex + projectsPerPage;
+  const currentProjects = projects.slice(startIndex, endIndex);
+
+  const toggleExpanded = (index: number) => {
+    setExpandedProjects(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
+
+  const truncateText = (text: string, limit: number = 200) => {
+    if (text.length <= limit) return text;
+    return text.substring(0, limit) + '...';
+  };
+  const handleExportCV = async () => {
+    try {
+      const response = await fetch('/api/export-cv');
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'Satadeep_Dasgupta_CV.pdf';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading CV:', error);
+    }
+  };
+
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20`}
-    >
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className={`${firaCode.variable} font-mono min-h-screen`}>
+      {/* Hero Section */}
+      <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+        {/* Retro Grid Background */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `
+              linear-gradient(rgba(251, 191, 36, 0.3) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(251, 191, 36, 0.3) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }}></div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        
+        <div className="text-center max-w-6xl mx-auto relative z-10">          
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 relative">
+            <span className="bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500 bg-clip-text text-transparent">
+              SATADEEP
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-400 bg-clip-text text-transparent">
+              DASGUPTA
+            </span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Dynamic Full-Stack Developer with 5+ years of experience designing, developing, and managing complex web
+            applications. Specializing in React, Node.js, Rust, and C++ to create scalable and efficient software solutions.
+          </p>
+          
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <Button size="lg" onClick={handleExportCV}>
+              <Download className="w-5 h-5 mr-2" />
+              Download CV
+            </Button>
+            <div className="bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 flex items-center gap-2 font-mono text-sm">
+              <span className="text-green-400">$</span>
+              <span className="text-gray-300">satadeep@dev:~</span>
+            </div>
+          </div>
+          
+          <div className="flex justify-center gap-6">
+            <Button variant="link" size="icon" className="hover:text-yellow-400" asChild>
+              <a href="https://github.com/satadeep3927" target="_blank" rel="noopener noreferrer">
+                <Github className="w-6 h-6" />
+              </a>
+            </Button>
+            <Button variant="link" size="icon" className="hover:text-yellow-400" asChild>
+              <a href="https://linkedin.com/in/satadeep-dasgupta-028291188" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="w-6 h-6" />
+              </a>
+            </Button>
+            <Button variant="link" size="icon" className="hover:text-yellow-400" asChild>
+              <a href="mailto:satadeep3927@gmail.com">
+                <Mail className="w-6 h-6" />
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">
+            <span className="text-yellow-500">&gt;</span> SKILLS.json
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {/* Programming Languages */}
+            <div>
+              <h3 className="text-xl font-bold mb-6 text-yellow-400">Languages</h3>
+              <div className="space-y-3">
+                {['JavaScript', 'TypeScript', 'React', 'Node.js', 'Rust', 'C++', 'Python', 'Java'].map((skill) => (
+                  <div key={skill} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span className="text-gray-300">{skill}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Technologies & Frameworks */}
+            <div>
+              <h3 className="text-xl font-bold mb-6 text-yellow-400">Technologies</h3>
+              <div className="space-y-3">
+                {['Full-Stack Development', 'Mobile Development', 'Flutter', 'React Native', 'System Programming', 'Performance Optimization', 'Backend Development', 'Frontend Development', 'Software Architecture', 'API Design', 'Database Management'].map((skill) => (
+                  <div key={skill} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span className="text-gray-300">{skill}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Spoken Languages */}
+            <div>
+              <h3 className="text-xl font-bold mb-6 text-yellow-400">Spoken Languages</h3>
+              <div className="space-y-3">
+                {['English', 'Bengali', 'Hindi'].map((lang) => (
+                  <div key={lang} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span className="text-gray-300">{lang}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section className="py-20 px-4 bg-black/20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">
+            <span className="text-yellow-500">&gt;</span> EXPERIENCE.log
+          </h2>
+          <div className="space-y-8">
+            {experience.map((exp, index) => (
+              <Card key={index} className="w-full">
+                <Card.Header>
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4">
+                    <div className="flex-1">
+                      <Card.Title className="text-xl">{exp.frontMatter.title}</Card.Title>
+                      <Card.Description className="text-yellow-400 font-semibold text-lg">
+                        {exp.frontMatter.company}
+                      </Card.Description>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-yellow-400 whitespace-nowrap">
+                      <Calendar className="w-4 h-4" />
+                      {exp.frontMatter.start} - {exp.frontMatter.end}
+                    </div>
+                  </div>
+                </Card.Header>
+                <Card.Content>
+                  <div className="prose prose-invert max-w-none">
+                    <div dangerouslySetInnerHTML={{ __html: exp.content.replace(/\n/g, '<br>') }} />
+                  </div>
+                </Card.Content>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">
+            <span className="text-yellow-500">&gt;</span> PROJECTS/
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {currentProjects.map((project, index) => {
+              const globalIndex = startIndex + index;
+              const isExpanded = expandedProjects[globalIndex];
+              const content = isExpanded ? project.content : truncateText(project.content);
+              
+              return (
+                <Card key={globalIndex}>
+                  <Card.Header>
+                    <Card.Title>{project.frontMatter.title}</Card.Title>
+                    <Card.Description>{project.frontMatter.description}</Card.Description>
+                  </Card.Header>
+                  <Card.Content>
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-2">
+                        {project.frontMatter.tech?.map((tech: string) => (
+                          <Badge key={tech} variant="outline">{tech}</Badge>
+                        ))}
+                      </div>
+                      <div className="prose prose-invert prose-sm max-w-none">
+                        <div dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br>') }} />
+                      </div>
+                      {project.content.length > 200 && (
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          onClick={() => toggleExpanded(globalIndex)}
+                          className="text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-black"
+                        >
+                          <Eye className="w-4 h-4 mr-2" />
+                          {isExpanded ? 'Read Less' : 'Read More'}
+                        </Button>
+                      )}
+                      <div className="flex gap-4 pt-4">
+                        {project.frontMatter.github && (
+                          <Button variant="outline" size="sm" asChild>
+                            <a href={project.frontMatter.github} target="_blank" rel="noopener noreferrer">
+                              <Github className="w-4 h-4 mr-2" />
+                              Code
+                            </a>
+                          </Button>
+                        )}
+                        {project.frontMatter.demo && (
+                          <Button size="sm" asChild>
+                            <a href={project.frontMatter.demo} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="w-4 h-4 mr-2" />
+                              Demo
+                            </a>
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </Card.Content>
+                </Card>
+              );
+            })}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex justify-center items-center gap-4 mt-12">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-black disabled:opacity-50"
+              >
+                <ChevronLeft className="w-4 h-4 mr-2" />
+                Previous
+              </Button>
+              
+              <div className="flex gap-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <Button
+                    key={page}
+                    variant={currentPage === page ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setCurrentPage(page)}
+                    className={currentPage === page 
+                      ? "bg-yellow-400 text-black hover:bg-yellow-500" 
+                      : "text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-black"
+                    }
+                  >
+                    {page}
+                  </Button>
+                ))}
+              </div>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className="text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-black disabled:opacity-50"
+              >
+                Next
+                <ChevronRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Research Section */}
+      <section className="py-20 px-4 bg-black/20">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">
+            <span className="text-yellow-500">&gt;</span> RESEARCH & PUBLICATIONS.log
+          </h2>
+          <div className="space-y-8">
+            {research.map((paper, index) => (
+              <Card key={index}>
+                <Card.Header>
+                  <Card.Title>{paper.frontMatter.title}</Card.Title>
+                  <Card.Description className="text-yellow-400">
+                    {paper.frontMatter.journal}
+                  </Card.Description>
+                </Card.Header>
+                <Card.Content>
+                  <div className="space-y-4">
+                    <div className="prose prose-invert max-w-none">
+                      <div dangerouslySetInnerHTML={{ __html: paper.content.replace(/\n/g, '<br>') }} />
+                    </div>
+                    {paper.frontMatter.pdf && (
+                      <Button variant="outline" size="sm">
+                        <ExternalLink className="w-4 h-4" />
+                        Read Paper
+                      </Button>
+                    )}
+                  </div>
+                </Card.Content>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact & CV Export Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-12">
+            <span className="text-yellow-500">&gt;</span> CONTACT.sh
+          </h2>
+          <p className="text-xl mb-8 text-gray-300">
+            Let's build something amazing together!
+          </p>
+          
+          {/* Contact Grid */}
+          <div className="grid md:grid-cols-2 gap-8 mb-8 text-left">
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-yellow-400">Get In Touch</h3>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-yellow-500" />
+                  <a href="mailto:satadeep3927@gmail.com" className="hover:text-yellow-400 transition-colors">
+                    satadeep3927@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-5 h-5 text-yellow-500">📱</span>
+                  <span>+91 6289877656</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="w-5 h-5 text-yellow-500">📍</span>
+                  <span>Kolkata, West Bengal, India</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-yellow-400">Social Links</h3>
+              <div className="space-y-3">
+                <a href="https://github.com/satadeep3927" target="_blank" rel="noopener noreferrer" 
+                   className="flex items-center gap-3 hover:text-yellow-400 transition-colors">
+                  <Github className="w-5 h-5 text-yellow-500" />
+                  GitHub Profile
+                </a>
+                <a href="https://linkedin.com/in/satadeep-dasgupta-028291188" target="_blank" rel="noopener noreferrer"
+                   className="flex items-center gap-3 hover:text-yellow-400 transition-colors">
+                  <Linkedin className="w-5 h-5 text-yellow-500" />
+                  LinkedIn Profile
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-yellow-500/30">
+            <Button onClick={handleExportCV} size="lg" className="bg-yellow-500 text-black hover:bg-yellow-400">
+              <Download className="w-5 h-5 mr-2" />
+              EXPORT CV
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-4 border-t border-yellow-500/30 text-center">
+        <p className="text-yellow-400">
+          © 2025 Satadeep Dasgupta • Built with Next.js & Retro Vibes
+        </p>
       </footer>
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const { experience, projects, research } = getAllContent();
+  
+  return {
+    props: {
+      experience,
+      projects,
+      research,
+    },
+  };
+};
