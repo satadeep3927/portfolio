@@ -46,8 +46,8 @@ export default function Home({ experience, projects, research }: HomeProps) {
       // Download the pre-generated CV HTML file
       const a = document.createElement('a');
       a.style.display = 'none';
-      a.href = '/resume/Satadeep_Dasgupta_CV.html';
-      a.download = 'Satadeep_Dasgupta_CV.html';
+      a.href = '/resume/Satadeep_Dasgupta_CV.pdf';
+      a.download = 'Satadeep_Dasgupta_CV.pdf';
       a.target = '_blank'; // Open in new tab so users can print to PDF
       document.body.appendChild(a);
       a.click();
@@ -194,7 +194,9 @@ export default function Home({ experience, projects, research }: HomeProps) {
                 </Card.Header>
                 <Card.Content>
                   <div className="text-gray-300 space-y-2">
-                    <div dangerouslySetInnerHTML={{ __html: exp.content.replace(/\n/g, '<br>') }} />
+                    {exp.content.split('\n').map((line: string, lineIndex: number) => (
+                      <div key={lineIndex}>{line}</div>
+                    ))}
                   </div>
                 </Card.Content>
               </Card>
@@ -229,7 +231,9 @@ export default function Home({ experience, projects, research }: HomeProps) {
                         ))}
                       </div>
                       <div className="text-gray-300 text-sm space-y-2">
-                        <div dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br>') }} />
+                        {content.split('\n').map((line: string, lineIndex: number) => (
+                          <div key={lineIndex}>{line}</div>
+                        ))}
                       </div>
                       {project.content.length > 200 && (
                         <Button 
@@ -324,17 +328,19 @@ export default function Home({ experience, projects, research }: HomeProps) {
               <Card key={index}>
                 <Card.Header>
                   <Card.Title className="text-xl">{paper.frontMatter.title}</Card.Title>
-                  <Card.Description className="text-yellow-400 space-y-1">
-                    <div className="font-semibold">{paper.frontMatter.journal}</div>
+                  <Card.Description className="text-yellow-400">
+                    <span className="font-semibold">{paper.frontMatter.journal}</span>
                     {paper.frontMatter.authors && (
-                      <div className="text-sm text-gray-400">Authors: {paper.frontMatter.authors}</div>
+                      <span className="block text-sm text-gray-400 mt-1">Authors: {paper.frontMatter.authors}</span>
                     )}
                   </Card.Description>
                 </Card.Header>
                 <Card.Content>
                   <div className="space-y-4">
                     <div className="text-gray-300 space-y-3">
-                      <div dangerouslySetInnerHTML={{ __html: paper.content.replace(/\n/g, '<br>') }} />
+                      {paper.content.split('\n').map((line: string, lineIndex: number) => (
+                        <div key={lineIndex}>{line}</div>
+                      ))}
                     </div>
                     <div className="flex flex-wrap gap-4">
                       {paper.frontMatter.pdf && (
