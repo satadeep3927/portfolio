@@ -11,6 +11,8 @@ export interface FrontMatter {
   end?: string
   journal?: string
   pdf?: string
+  doi?: string
+  authors?: string
   github?: string
   demo?: string
   tech?: string[]

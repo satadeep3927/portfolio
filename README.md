@@ -1,40 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🚀 Retro Developer Portfolio
 
-## Getting Started
+A modern, retro-themed developer portfolio built with Next.js, featuring MDX content management and CLI-based CV generation.
 
-First, run the development server:
+## 🌟 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Retro Dark Theme**: Classic terminal-inspired design with yellow accents
+- **MDX Content**: Dynamic content management for experience, projects, and research
+- **RetroUI Components**: Custom components built with shadcn/ui
+- **CV Export**: Pre-generated HTML CV with print-to-PDF capability
+- **Responsive Design**: Optimized for all device sizes
+- **Fast Performance**: Powered by Next.js 15 with Turbopack
+
+## 🏗️ Project Structure
+
+```
+📁 portfolio/
+├── 📁 content/           # MDX content files
+│   ├── experience/       # Work experience entries
+│   ├── projects/         # Project showcases
+│   └── research/         # Research papers
+├── 📁 pages/            # Next.js pages
+│   ├── index.tsx        # Main portfolio page
+│   └── api/             # API routes
+├── 📁 resume/           # CV source files
+│   └── resume.md        # Markdown resume source
+├── 📁 scripts/          # Build utilities
+│   └── generate-cv.js   # CV generation script
+├── 📁 public/           # Static assets
+│   └── resume/          # Generated CV files
+└── 📁 styles/           # Global styles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. **Install dependencies:**
+```bash
+npm install
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+2. **Start development server:**
+```bash
+npm run dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+3. **Generate CV:**
+```bash
+npm run generate-cv
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Visit [http://localhost:3000](http://localhost:3000) to view the portfolio.
 
-## Learn More
+## 📝 Content Management
 
-To learn more about Next.js, take a look at the following resources:
+### Adding Experience
+Create new `.mdx` files in `content/experience/`:
+```mdx
+---
+title: "Your Role"
+company: "Company Name"
+start: "2024"
+end: "Present"
+---
+- Key achievement 1
+- Key achievement 2
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+### Adding Projects
+Create new `.mdx` files in `content/projects/`:
+```mdx
+---
+title: "Project Name"
+description: "Brief description"
+tech: ["React", "TypeScript"]
+github: "https://github.com/user/repo"
+demo: "https://demo-url.com"
+---
+Detailed project description...
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Adding Research
+Create new `.mdx` files in `content/research/`:
+```mdx
+---
+title: "Paper Title"
+journal: "Conference/Journal"
+year: "2024"
+pdf: "https://example.com/paper.pdf"
+doi: "10.1000/example"
+---
+Abstract content...
+```
 
-## Deploy on Vercel
+## 🎨 Styling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Framework**: Tailwind CSS v4
+- **Components**: shadcn/ui with custom RetroUI theme
+- **Typography**: Fira Code monospace font
+- **Colors**: Dark theme with yellow (#FBD700) accents
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## 📄 CV Generation
+
+The portfolio includes a CLI-based CV generation system:
+
+1. **Source**: `resume/resume.md` (Markdown format)
+2. **Output**: `public/resume/Satadeep_Dasgupta_CV.html`
+3. **Usage**: Click "EXPORT CV" button on the portfolio or run `npm run generate-cv`
+
+### CV Workflow:
+1. Edit `resume/resume.md` with your information
+2. Run `npm run generate-cv` to generate HTML
+3. Portfolio automatically links to the generated file
+4. Users can print to PDF from their browser
+
+## 🚢 Deployment
+
+The portfolio is designed for deployment on Vercel:
+
+1. **Connect repository** to Vercel
+2. **Build settings**: Next.js (automatic)
+3. **Environment**: No special variables needed
+4. **Build command**: `npm run build`
+
+### Pre-deployment:
+```bash
+# Generate CV before deployment
+npm run generate-cv
+
+# Build project
+npm run build
+```
+
+## 🛠️ Technologies
+
+- **Next.js 15.5.2** - React framework with Turbopack
+- **TypeScript** - Type safety
+- **Tailwind CSS v4** - Utility-first styling
+- **MDX** - Markdown with JSX components
+- **shadcn/ui** - Modern UI components
+- **Lucide React** - Icon library
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).

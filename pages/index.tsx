@@ -43,16 +43,15 @@ export default function Home({ experience, projects, research }: HomeProps) {
   };
   const handleExportCV = async () => {
     try {
-      const response = await fetch('/api/export-cv');
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
+      // Download the pre-generated CV HTML file
       const a = document.createElement('a');
       a.style.display = 'none';
-      a.href = url;
-      a.download = 'Satadeep_Dasgupta_CV.pdf';
+      a.href = '/resume/Satadeep_Dasgupta_CV.html';
+      a.download = 'Satadeep_Dasgupta_CV.html';
+      a.target = '_blank'; // Open in new tab so users can print to PDF
       document.body.appendChild(a);
       a.click();
-      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
     } catch (error) {
       console.error('Error downloading CV:', error);
     }
@@ -194,7 +193,7 @@ export default function Home({ experience, projects, research }: HomeProps) {
                   </div>
                 </Card.Header>
                 <Card.Content>
-                  <div className="prose prose-invert max-w-none">
+                  <div className="text-gray-300 space-y-2">
                     <div dangerouslySetInnerHTML={{ __html: exp.content.replace(/\n/g, '<br>') }} />
                   </div>
                 </Card.Content>
@@ -229,7 +228,7 @@ export default function Home({ experience, projects, research }: HomeProps) {
                           <Badge key={tech} variant="outline">{tech}</Badge>
                         ))}
                       </div>
-                      <div className="prose prose-invert prose-sm max-w-none">
+                      <div className="text-gray-300 text-sm space-y-2">
                         <div dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br>') }} />
                       </div>
                       {project.content.length > 200 && (
@@ -324,22 +323,45 @@ export default function Home({ experience, projects, research }: HomeProps) {
             {research.map((paper, index) => (
               <Card key={index}>
                 <Card.Header>
-                  <Card.Title>{paper.frontMatter.title}</Card.Title>
-                  <Card.Description className="text-yellow-400">
-                    {paper.frontMatter.journal}
+                  <Card.Title className="text-xl">{paper.frontMatter.title}</Card.Title>
+                  <Card.Description className="text-yellow-400 space-y-1">
+                    <div className="font-semibold">{paper.frontMatter.journal}</div>
+                    {paper.frontMatter.authors && (
+                      <div className="text-sm text-gray-400">Authors: {paper.frontMatter.authors}</div>
+                    )}
                   </Card.Description>
                 </Card.Header>
                 <Card.Content>
                   <div className="space-y-4">
-                    <div className="prose prose-invert max-w-none">
+                    <div className="text-gray-300 space-y-3">
                       <div dangerouslySetInnerHTML={{ __html: paper.content.replace(/\n/g, '<br>') }} />
                     </div>
-                    {paper.frontMatter.pdf && (
-                      <Button variant="outline" size="sm">
-                        <ExternalLink className="w-4 h-4" />
-                        Read Paper
-                      </Button>
-                    )}
+                    <div className="flex flex-wrap gap-4">
+                      {paper.frontMatter.pdf && (
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={paper.frontMatter.pdf} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            Read Paper
+                          </a>
+                        </Button>
+                      )}
+                      {paper.frontMatter.doi && (
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={`https://doi.org/${paper.frontMatter.doi}`} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            DOI Link
+                          </a>
+                        </Button>
+                      )}
+                      {paper.frontMatter.github && (
+                        <Button variant="outline" size="sm" asChild>
+                          <a href={paper.frontMatter.github} target="_blank" rel="noopener noreferrer">
+                            <Github className="w-4 h-4 mr-2" />
+                            Source Code
+                          </a>
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </Card.Content>
               </Card>
@@ -409,7 +431,7 @@ export default function Home({ experience, projects, research }: HomeProps) {
       {/* Footer */}
       <footer className="py-8 px-4 border-t border-yellow-500/30 text-center">
         <p className="text-yellow-400">
-          © 2025 Satadeep Dasgupta • Built with Next.js & Retro Vibes
+          © 2025 Satadeep Dasgupta
         </p>
       </footer>
     </div>

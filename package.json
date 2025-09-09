@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate-cv": "node scripts/generate-cv.js",
+    "build-cv": "node scripts/generate-cv.js",
+    "cv": "node scripts/generate-cv.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -24,6 +27,9 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "tailwind-merge": "^3.3.1"
+  },
+  "optionalDependencies": {
+    "puppeteer": "^22.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
