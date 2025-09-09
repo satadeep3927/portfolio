@@ -1,10 +1,14 @@
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: "default" | "secondary" | "destructive" | "outline"
+  variant?: "default" | "secondary" | "destructive" | "outline";
 }
 
-export function Badge({ className, variant = "default", ...props }: BadgeProps) {
+export function Badge({
+  className,
+  variant = "default",
+  ...props
+}: BadgeProps) {
   return (
     <div
       className={cn(
@@ -19,9 +23,9 @@ export function Badge({ className, variant = "default", ...props }: BadgeProps) 
           "border-yellow-500 text-yellow-500 bg-transparent hover:bg-yellow-500/10":
             variant === "outline",
         },
-        className
+        className,
       )}
       {...props}
     />
-  )
+  );
 }

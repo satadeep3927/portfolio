@@ -34,16 +34,19 @@ A modern, retro-themed developer portfolio built with Next.js, featuring MDX con
 ## 🚀 Getting Started
 
 1. **Install dependencies:**
+
 ```bash
 npm install
 ```
 
 2. **Start development server:**
+
 ```bash
 npm run dev
 ```
 
 3. **Generate CV:**
+
 ```bash
 npm run generate-cv
 ```
@@ -53,7 +56,9 @@ Visit [http://localhost:3000](http://localhost:3000) to view the portfolio.
 ## 📝 Content Management
 
 ### Adding Experience
+
 Create new `.mdx` files in `content/experience/`:
+
 ```mdx
 ---
 title: "Your Role"
@@ -61,12 +66,15 @@ company: "Company Name"
 start: "2024"
 end: "Present"
 ---
+
 - Key achievement 1
 - Key achievement 2
 ```
 
 ### Adding Projects
+
 Create new `.mdx` files in `content/projects/`:
+
 ```mdx
 ---
 title: "Project Name"
@@ -75,11 +83,14 @@ tech: ["React", "TypeScript"]
 github: "https://github.com/user/repo"
 demo: "https://demo-url.com"
 ---
+
 Detailed project description...
 ```
 
 ### Adding Research
+
 Create new `.mdx` files in `content/research/`:
+
 ```mdx
 ---
 title: "Paper Title"
@@ -88,6 +99,7 @@ year: "2024"
 pdf: "https://example.com/paper.pdf"
 doi: "10.1000/example"
 ---
+
 Abstract content...
 ```
 
@@ -107,6 +119,7 @@ The portfolio includes a CLI-based CV generation system:
 3. **Usage**: Click "EXPORT CV" button on the portfolio or run `npm run generate-cv`
 
 ### CV Workflow:
+
 1. Edit `resume/resume.md` with your information
 2. Run `npm run generate-cv` to generate HTML
 3. Portfolio automatically links to the generated file
@@ -122,6 +135,7 @@ The portfolio is designed for deployment on Vercel:
 4. **Build command**: `npm run build`
 
 ### Pre-deployment:
+
 ```bash
 # Generate CV before deployment
 npm run generate-cv
