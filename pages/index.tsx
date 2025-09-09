@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Head from "next/head";
 import { Fira_Code } from "next/font/google";
 import { getAllContent } from "@/lib/mdx";
 import { Card } from "@/components/retroui/Card";
@@ -58,7 +59,14 @@ export default function Home({ experience, projects, research }: HomeProps) {
   };
 
   return (
-    <div className={`${firaCode.variable} font-mono min-h-screen`}>
+    <>
+      <Head>
+        <title>Satadeep Dasgupta - Full-Stack Developer & Solution Architect</title>
+        <meta name="description" content="Dynamic Full-Stack Developer with 5+ years of experience in React, Node.js, Rust, and C++. Currently working as Solution Architect at Brainium Information Technologies." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className={`${firaCode.variable} font-mono min-h-screen`}>
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
         {/* Retro Grid Background */}
@@ -441,6 +449,7 @@ export default function Home({ experience, projects, research }: HomeProps) {
         </p>
       </footer>
     </div>
+    </>
   );
 }
 
