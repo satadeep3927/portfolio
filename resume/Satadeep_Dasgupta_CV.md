@@ -232,9 +232,3 @@ _Zenodo Repository | September 2025_
 
 **Brahmananda Keshab Chandra College**  
 _2019 - 2022_
-
----
-
-## Certifications
-
-_Add relevant professional certifications as applicable_
