@@ -91,6 +91,22 @@ English (Fluent), Bengali (Native), Hindi (Fluent)
 
 ## Projects
 
+### **Loom-UI** | _February 2026_
+
+Monitoring and observability dashboard for Loom workflows
+
+- **Technologies**: TypeScript, React, Dashboard, Monitoring, Observability
+- **Features**: Workflow visualization, execution details, health monitoring, search & filtering
+- **GitHub**: [satadeep3927/loom-ui](https://github.com/satadeep3927/loom-ui)
+
+### **Loom** | _January 2026_
+
+Durable workflow orchestration engine for long-running, reliable processes
+
+- **Technologies**: Python, Workflow Engine, Event Sourcing, Distributed Systems
+- **Features**: Durable workflows, event sourcing, deterministic execution, fault tolerance
+- **GitHub**: [satadeep3927/loom](https://github.com/satadeep3927/loom)
+
 ### **IP Blocker** | _September 2025_
 
 Network security tool for IP address blocking and traffic management
@@ -112,12 +128,37 @@ Intelligent knowledge base system with advanced cognitive capabilities
 - **Technologies**: AI/ML, Knowledge Management, Natural Language Processing
 - **GitHub**: [satadeep3927/cognibase](https://github.com/satadeep3927/cognibase)
 
+### **FrostUI CLI** | _June 2025_
+
+Powerful CLI for installing and managing FrostUI React Native components
+
+- **Technologies**: Node.js, TypeScript, CLI, React Native, Expo
+- **Features**: GitLab authentication, component installation, theme system, auto-detection
+- **GitHub**: [satadeep3927/frostui-cli](https://github.com/satadeep3927/frostui-cli)
+- **NPM**: [frostui-cli](https://www.npmjs.com/package/frostui-cli)
+
 ### **OxideDB** | _May 2025_
 
 High-performance database system built with modern architecture
 
 - **Technologies**: Rust, Database, Systems Programming, Performance Optimization
 - **GitHub**: [satadeep3927/oxidedb](https://github.com/satadeep3927/oxidedb)
+
+### **Streammint Client** | _May 2025_
+
+TypeScript frontend for real-time streaming and media management
+
+- **Technologies**: TypeScript, React, Frontend, Streaming
+- **Features**: Streaming UI, media management, API integration, real-time feedback
+- **GitHub**: [satadeep3927/-streammint-client](https://github.com/satadeep3927/-streammint-client)
+
+### **Streammint Server** | _May 2025_
+
+Pluggable Rust backend for real-time chat and messaging
+
+- **Technologies**: Rust, Backend, Real-time, Chat
+- **Features**: Pluggable architecture, real-time messaging, scalable design
+- **GitHub**: [satadeep3927/streammint-server](https://github.com/satadeep3927/streammint-server)
 
 ### **Tunez (Open Source)** | _January 2024_
 
