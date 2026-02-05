@@ -1,0 +1,21 @@
+---
+title: "Loom"
+description: "Durable workflow orchestration engine for long-running, reliable processes"
+tech: ["Python", "Workflow Engine", "Event Sourcing", "Distributed Systems"]
+github: "https://github.com/satadeep3927/loom"
+demo: ""
+date: "2026-01"
+---
+
+Loom is a durable workflow orchestration engine built in Python, inspired by systems like Temporal and the Durable Task Framework. It focuses on making long-running business processes reliable, observable, and easy to reason about.
+
+By combining deterministic workflows with event-sourced state, Loom enables workflows that can survive restarts, failures, and deployments without losing progress.
+
+### Key Features
+
+- **Durable Workflows**: Long-running workflows that can safely pause, resume, and recover
+- **Event Sourcing**: Uses an event log to persist and replay workflow state
+- **Deterministic Execution**: Clear separation between pure workflow logic and side-effecting activities
+- **Fault Tolerance**: Automatic recovery from crashes via replay
+- **Developer Friendly**: Python-first API for defining workflows and activities
+- **Pluggable Persistence**: Backed by SQLite initially, extensible to other storage backends
