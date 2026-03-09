@@ -5,12 +5,22 @@ const path = require("path");
 const { exec } = require("child_process");
 
 // Configuration
-const RESUME_SOURCE = path.join(__dirname, "../resume/resume.md");
+const RESUME_SOURCE_MD = path.join(
+  __dirname,
+  "../resume/Satadeep_Dasgupta_CV.md",
+);
+const RESUME_SOURCE_HTML = path.join(
+  __dirname,
+  "../public/resume/Satadeep_Dasgupta_CV.html",
+);
 const OUTPUT_PDF = path.join(
   __dirname,
   "../public/resume/Satadeep_Dasgupta_CV.pdf",
 );
-const OUTPUT_HTML = path.join(__dirname, "../public/resume/resume-temp.html");
+const OUTPUT_HTML = path.join(
+  __dirname,
+  "../public/resume/Satadeep_Dasgupta_CV-temp.html",
+);
 
 // CSS Styles for professional PDF output
 const CSS_STYLES = `
@@ -303,23 +313,98 @@ function generateHTMLVersion(inputFile, outputFile) {
   });
 }
 
+// Convert professionally styled HTML CV to PDF
+function convertHTMLToPDF(htmlFile, outputFile) {
+  return new Promise((resolve, reject) => {
+    // Check if Puppeteer is available
+    exec("node -e \"require('puppeteer')\"", (error) => {
+      if (error) {
+        reject(
+          new Error(
+            "Puppeteer is not installed. Install with: npm install puppeteer",
+          ),
+        );
+      } else {
+        // Use Puppeteer for PDF generation
+        const puppeteerScript = `
+const puppeteer = require('puppeteer');
+const fs = require('fs');
+const path = require('path');
+
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  
+  const htmlPath = path.resolve('${htmlFile}');
+  const htmlContent = fs.readFileSync(htmlPath, 'utf8');
+  await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
+  
+  await page.pdf({
+    path: '${outputFile}',
+    format: 'A4',
+    margin: {
+      top: '12mm',
+      bottom: '12mm',
+      left: '12mm',
+      right: '12mm'
+    },
+    printBackground: true
+  });
+  
+  await browser.close();
+  console.log('✅ PDF generated successfully: ${outputFile}');
+})();
+`;
+
+        const tempScript = "temp-html-pdf-generator.js";
+        fs.writeFileSync(tempScript, puppeteerScript);
+        exec(`node ${tempScript}`, (error, stdout, stderr) => {
+          fs.unlinkSync(tempScript);
+          if (error) {
+            reject(error);
+          } else {
+            console.log(stdout);
+            resolve(stdout);
+          }
+        });
+      }
+    });
+  });
+}
+
 // Main execution function
 async function generateCV() {
   try {
     console.log("🚀 Starting CV generation...");
 
-    // Check if source file exists
-    if (!fs.existsSync(RESUME_SOURCE)) {
-      throw new Error(`Source file not found: ${RESUME_SOURCE}`);
-    }
+    // Check if HTML CV exists (preferred method)
+    if (fs.existsSync(RESUME_SOURCE_HTML)) {
+      console.log("✅ Using professionally styled HTML CV");
 
-    // Try different conversion methods
-    try {
-      await checkPandoc();
-      await convertToPDF(RESUME_SOURCE, OUTPUT_PDF);
-    } catch (pandocError) {
-      console.log("⚠️  Pandoc method failed, trying alternative...");
-      await convertViaPuppeteer(RESUME_SOURCE, OUTPUT_PDF);
+      // Try to convert HTML to PDF using puppeteer
+      try {
+        await convertHTMLToPDF(RESUME_SOURCE_HTML, OUTPUT_PDF);
+      } catch (htmlError) {
+        console.log("⚠️  HTML-to-PDF conversion requires Puppeteer");
+        console.log("💡 Install with: npm install puppeteer");
+        console.log(
+          "📄 HTML CV is available at: public/resume/Satadeep_Dasgupta_CV.html",
+        );
+      }
+    } else if (fs.existsSync(RESUME_SOURCE_MD)) {
+      // Fallback to markdown conversion
+      console.log("📝 Using Markdown CV");
+
+      // Try different conversion methods
+      try {
+        await checkPandoc();
+        await convertToPDF(RESUME_SOURCE_MD, OUTPUT_PDF);
+      } catch (pandocError) {
+        console.log("⚠️  Pandoc method failed, trying alternative...");
+        await convertViaPuppeteer(RESUME_SOURCE_MD, OUTPUT_PDF);
+      }
+    } else {
+      throw new Error("No CV source file found (MD or HTML)");
     }
 
     console.log("🎉 CV generation completed!");
@@ -328,7 +413,9 @@ async function generateCV() {
     console.log("\n📝 Alternative options:");
     console.log("1. Install Pandoc: https://pandoc.org/installing.html");
     console.log("2. Install Puppeteer: npm install puppeteer");
-    console.log("3. Use the generated HTML file and print to PDF manually");
+    console.log(
+      "3. Open public/resume/Satadeep_Dasgupta_CV.html in browser and print to PDF",
+    );
     process.exit(1);
   }
 }

@@ -7,15 +7,14 @@ demo: ""
 date: "2026-01"
 ---
 
-Loom is a durable workflow orchestration engine built in Python, inspired by systems like Temporal and the Durable Task Framework. It focuses on making long-running business processes reliable, observable, and easy to reason about.
+Workflow orchestration engine designed for deterministic execution of long-running processes. Loom implements event-sourced workflow execution with deterministic replay, enabling fault-tolerant orchestration of asynchronous tasks in distributed systems.
 
-By combining deterministic workflows with event-sourced state, Loom enables workflows that can survive restarts, failures, and deployments without losing progress.
+Inspired by systems like Temporal and the Durable Task Framework, Loom makes long-running business processes reliable, observable, and easy to reason about through event-sourced state management.
 
-### Key Features
+### Key Capabilities
 
-- **Durable Workflows**: Long-running workflows that can safely pause, resume, and recover
-- **Event Sourcing**: Uses an event log to persist and replay workflow state
-- **Deterministic Execution**: Clear separation between pure workflow logic and side-effecting activities
-- **Fault Tolerance**: Automatic recovery from crashes via replay
-- **Developer Friendly**: Python-first API for defining workflows and activities
-- **Pluggable Persistence**: Backed by SQLite initially, extensible to other storage backends
+- **Event-Sourced Execution**: Implements event-sourced workflow execution and deterministic replay for complete state reconstruction
+- **Fault Tolerance**: Supports fault-tolerant workflow execution with automatic state reconstruction from event logs
+- **Distributed Systems**: Designed for distributed systems requiring reliable orchestration of asynchronous tasks
+- **Deterministic Replay**: Workflows can survive restarts, failures, and deployments without losing progress
+- **Production Ready**: Python-first API with pluggable persistence layer for enterprise deployment

@@ -91,12 +91,10 @@ export default function Home({ experience, projects, research }: HomeProps) {
   return (
     <>
       <Head>
-        <title>
-          Satadeep Dasgupta - Full-Stack Developer & Solution Architect
-        </title>
+        <title>Satadeep Dasgupta - Solution Architect & Systems Engineer</title>
         <meta
           name="description"
-          content="Dynamic Full-Stack Developer with 5+ years of experience in React, Node.js, Rust, and C++. Currently working as Solution Architect at Brainium Information Technologies."
+          content="Software engineer specializing in execution runtimes, workflow orchestration systems, and developer infrastructure. Solution Architect at Brainium Information Technologies building distributed systems with Rust, C++, Python, and TypeScript."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -130,10 +128,11 @@ export default function Home({ experience, projects, research }: HomeProps) {
             </h1>
 
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Dynamic Full-Stack Developer with 5+ years of experience
-              designing, developing, and managing complex web applications.
-              Specializing in React, Node.js, Rust, and C++ to create scalable
-              and efficient software solutions.
+              Software engineer specializing in execution runtimes, workflow
+              orchestration systems, and developer infrastructure. Currently
+              building distributed systems and AI-powered platforms as Solution
+              Architect at Brainium Information Technologies. Experienced in
+              systems programming with Rust, C++, Python, and TypeScript.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-12">
@@ -205,14 +204,14 @@ export default function Home({ experience, projects, research }: HomeProps) {
                 </h3>
                 <div className="space-y-3">
                   {[
-                    "JavaScript",
-                    "TypeScript",
-                    "React",
-                    "Node.js",
                     "Rust",
                     "C++",
                     "Python",
+                    "TypeScript",
+                    "JavaScript",
                     "Java",
+                    "Node.js",
+                    "React",
                   ].map((skill) => (
                     <div key={skill} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
@@ -229,17 +228,17 @@ export default function Home({ experience, projects, research }: HomeProps) {
                 </h3>
                 <div className="space-y-3">
                   {[
-                    "Full-Stack Development",
-                    "Mobile Development",
-                    "Flutter",
-                    "React Native",
-                    "System Programming",
-                    "Performance Optimization",
-                    "Backend Development",
-                    "Frontend Development",
-                    "Software Architecture",
-                    "API Design",
-                    "Database Management",
+                    "Workflow Orchestration",
+                    "Distributed Systems",
+                    "Systems Programming",
+                    "Backend Engineering",
+                    "Event Sourcing",
+                    "REST APIs & GraphQL",
+                    "Docker & CI/CD",
+                    "Database Systems",
+                    "Cloud Architecture",
+                    "Developer Tooling",
+                    "Infrastructure Monitoring",
                   ].map((skill) => (
                     <div key={skill} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
@@ -529,7 +528,8 @@ export default function Home({ experience, projects, research }: HomeProps) {
               <span className="text-yellow-500">&gt;</span> CONTACT.sh
             </h2>
             <p className="text-xl mb-8 text-gray-300">
-              Let&apos;s build something amazing together!
+              Let&apos;s build distributed systems and solve complex engineering
+              challenges together
             </p>
 
             {/* Contact Grid */}
