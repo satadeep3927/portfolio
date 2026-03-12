@@ -1,0 +1,21 @@
+---
+title: "cvxtract"
+description: "Schema-driven document extraction library powered by large language models"
+tech: ["Rust", "LLM", "Document Processing", "Serde", "JSON Schema"]
+github: "https://github.com/satadeep3927/cvxtract"
+demo: ""
+date: "2026-03"
+---
+
+Open-source Rust library for schema-driven structured data extraction from documents using large language models. cvxtract enables developers to extract typed, validated data from unstructured documents with compile-time guarantees through Serde and JSON Schema integration.
+
+Built for production document processing pipelines requiring reliable structured extraction at scale with provider-agnostic LLM support.
+
+### Key Capabilities
+
+- **Multi-Format Document Processing**: Supports PDF, DOCX, HTML, and TXT inputs through unified document processing pipeline
+- **Typed Schema Extraction**: Implements structured extraction using Serde and JSON Schema for compile-time validated outputs with strong typing
+- **Provider-Agnostic Architecture**: Built-in support for local inference via llama.cpp and cloud API providers with extensible model abstraction layer
+- **Direct Struct Deserialization**: Custom schema extraction allowing developers to deserialize LLM outputs directly into Rust structs without manual parsing
+- **Modular Design**: Clean separation between document loaders, extraction pipeline, and model providers for maintainability and extensibility
+- **Production Ready**: Designed for high-throughput document processing with error handling and retry strategies for reliable extraction workflows

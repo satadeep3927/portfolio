@@ -1,20 +1,21 @@
 ---
 title: "OxideDB"
-description: "High-performance database system built with modern architecture"
-tech: ["Rust", "Database", "Systems Programming", "Performance Optimization"]
+description: "LLM-powered database system with natural language querying and gRPC protocol"
+tech: ["Rust", "SQLite", "LLM", "gRPC", "Protocol Buffers", "Multi-language SDKs"]
 github: "https://github.com/satadeep3927/oxidedb"
 demo: ""
 date: "2025-05"
 ---
 
-High-performance database system implemented in Rust. Designed as a modern embedded data engine with performance-focused architecture, exploring memory-safe database engine design principles.
+LLM-powered database system that combines SQLite with large language model capabilities, enabling both SQL and natural language queries. Built with high-performance gRPC protocol and Knex.js-inspired client SDKs for Rust, Python, and JavaScript/TypeScript.
 
-OxideDB demonstrates advanced systems programming techniques while leveraging Rust's memory safety guarantees for reliable data management.
+Designed for production workloads requiring intuitive natural language interfaces alongside traditional SQL querying with multi-tenant architecture and JWT-based authentication.
 
 ### Key Capabilities
 
-- **Performance-Focused Architecture**: Modern embedded data engine optimized for speed and efficiency
-- **Memory-Safe Design**: Leverages Rust's type system for zero-cost safety guarantees without runtime overhead
-- **Systems Programming**: Low-level optimizations and efficient data structure implementations
-- **Embedded Database**: Designed for embedded use cases with minimal resource footprint
-- **Production Quality**: Clean, maintainable architecture suitable for real-world deployment
+- **Dual Query Modes**: Execute raw SQL or use natural language queries converted to SQL via LLM integration with OpenAI API
+- **gRPC Protocol**: High-performance binary protocol with Protocol Buffers for efficient client-server communication on HTTP/2
+- **Multi-language SDKs**: Knex.js-inspired client libraries for Rust, Python, and JavaScript/TypeScript with fluent query builder interfaces
+- **Multi-tenant Architecture**: Namespace isolation with JWT-based authentication and user-specific access control
+- **Full SQLite Support**: Complete DDL/DML/DQL capabilities including CTEs, window functions, JSON operations, triggers, and full-text search
+- **Production Ready**: Thread-safe connection management, interactive CLI, database schema introspection, and comprehensive error handling

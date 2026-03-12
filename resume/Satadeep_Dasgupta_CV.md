@@ -116,14 +116,33 @@ GitHub: github.com/satadeep3927/loom-ui
 
 ## OxideDB
 
-High-performance database system implemented in Rust.
+LLM-powered database system combining SQLite with natural language querying capabilities.
 
-- Designed as a modern embedded data engine with performance-focused architecture.
-- Explores memory-safe database engine design using Rust.
+- Built dual query modes supporting raw SQL and natural language queries converted via LLM integration.
+- Implemented high-performance gRPC protocol with Protocol Buffers for efficient binary communication.
+- Developed Knex.js-inspired client SDKs for Rust, Python, and JavaScript/TypeScript with fluent query builders.
+- Architected multi-tenant system with namespace isolation and JWT-based authentication.
+- Supports full SQLite capabilities including CTEs, window functions, JSON operations, and triggers.
 
-Technologies: Rust, systems programming
+Technologies: Rust, SQLite, LLM, gRPC, Protocol Buffers, multi-language SDKs
 
 GitHub: github.com/satadeep3927/oxidedb
+
+---
+
+## cvxtract
+
+Open-source Rust library for schema-driven structured data extraction from documents using large language models.
+
+- Designed document processing pipeline supporting PDF, DOCX, HTML, and TXT inputs.
+- Implemented typed structured extraction using Serde and JSON Schema for compile-time validated outputs.
+- Built provider-agnostic LLM integration supporting local inference via llama.cpp and cloud APIs.
+- Enabled custom schema extraction allowing developers to deserialize LLM outputs directly into Rust structs.
+- Architected modular components including document loaders, extraction pipeline, and model abstraction layer.
+
+Technologies: Rust, LLM, document processing, Serde, JSON Schema
+
+GitHub: github.com/satadeep3927/cvxtract
 
 ---
 

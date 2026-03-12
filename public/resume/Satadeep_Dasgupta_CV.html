@@ -577,7 +577,7 @@
 
             <div class="project">
               <div class="project-title">
-                AIME — Adaptive Instruction & Misconception Engine
+                AIME <span style="color: var(--primary); font-weight: 400;">— Adaptive Instruction & Misconception Engine</span>
               </div>
               <div class="project-desc">
                 AI-powered learning platform generating personalized lessons
@@ -608,7 +608,7 @@
 
             <div class="project">
               <div class="project-title">
-                Loom — Durable Workflow Execution Engine
+                Loom <span style="color: var(--primary); font-weight: 400;">— Durable Workflow Execution Engine</span>
               </div>
               <div class="project-desc">
                 Workflow orchestration engine for deterministic execution of
@@ -635,7 +635,7 @@
 
             <div class="project">
               <div class="project-title">
-                Ironwatch — DDoS Mitigation System
+                Ironwatch <span style="color: var(--primary); font-weight: 400;">— DDoS Mitigation System</span>
               </div>
               <div class="project-desc">
                 Adaptive runtime-based DDoS mitigation deployed on production
@@ -658,18 +658,57 @@
             </div>
 
             <div class="project">
-              <div class="project-title">OxideDB</div>
+              <div class="project-title">
+                OxideDB <span style="color: var(--primary); font-weight: 400;">— LLM-Powered Database System</span>
+              </div>
               <div class="project-desc">
-                High-performance database system implemented in Rust
+                SQLite with natural language querying via gRPC
               </div>
               <ul>
                 <li>
-                  Modern embedded data engine with performance-focused
-                  architecture
+                  Dual query modes supporting SQL and natural language queries via LLM integration
                 </li>
-                <li>Explores memory-safe database engine design using Rust</li>
+                <li>
+                  High-performance gRPC protocol with Protocol Buffers for binary communication
+                </li>
+                <li>
+                  Knex.js-inspired SDKs for Rust, Python, and JavaScript/TypeScript
+                </li>
+                <li>
+                  Multi-tenant architecture with namespace isolation and JWT authentication
+                </li>
+                <li>
+                  Full SQLite support including CTEs, window functions, and triggers
+                </li>
               </ul>
-              <div class="tech-stack">Rust, Systems Programming, Database</div>
+              <div class="tech-stack">Rust, SQLite, LLM, gRPC, Protocol Buffers</div>
+            </div>
+
+            <div class="project">
+              <div class="project-title">
+                cvxtract <span style="color: var(--primary); font-weight: 400;">— Schema-Driven Document Extraction</span>
+              </div>
+              <div class="project-desc">
+                Rust library for LLM-powered structured data extraction
+              </div>
+              <ul>
+                <li>
+                  Document processing pipeline supporting PDF, DOCX, HTML, and TXT inputs
+                </li>
+                <li>
+                  Typed structured extraction using Serde and JSON Schema for compile-time validation
+                </li>
+                <li>
+                  Provider-agnostic LLM integration with local inference (llama.cpp) and cloud API support
+                </li>
+                <li>
+                  Custom schema extraction enabling direct deserialization into Rust structs
+                </li>
+                <li>
+                  Modular architecture with document loaders, extraction pipeline, and model abstraction
+                </li>
+              </ul>
+              <div class="tech-stack">Rust, LLM, Document Processing, Serde, JSON Schema</div>
             </div>
           </section>
 
