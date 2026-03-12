@@ -94,11 +94,9 @@
         text-decoration: underline;
       }
 
-      /* Two Column Layout */
+      /* Single Column Layout - ATS Friendly */
       .content {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 25px;
+        display: block;
         margin-top: 20px;
       }
 
@@ -377,10 +375,6 @@
 
       /* Responsive */
       @media screen and (max-width: 768px) {
-        .content {
-          grid-template-columns: 1fr;
-        }
-
         .container {
           padding: 20px;
         }
@@ -439,506 +433,255 @@
       </section>
 
       <div class="content">
-        <!-- Left Column -->
-        <div class="main-content">
-          <!-- Experience -->
-          <section class="section">
-            <h2 class="section-title">Experience</h2>
+        <!-- Experience -->
+        <section class="section">
+          <h2 class="section-title">Experience</h2>
 
-            <div class="job">
-              <div class="job-header">
-                <div class="job-title">Solution Architect</div>
-                <div class="company">
-                  Brainium Information Technologies Pvt Ltd
-                </div>
-                <div class="date">June 2024 – Present</div>
-              </div>
-
-              <div class="sub-role">
-                Solution Architect (January 2025 – Present)
-              </div>
-              <ul>
-                <li>
-                  Lead architecture design for enterprise software systems and
-                  cloud-native applications serving 50,000+ users
-                </li>
-                <li>
-                  Design scalable backend architectures and distributed
-                  workflows with 99.9% uptime requirements
-                </li>
-                <li>
-                  Develop AI-assisted systems including AIME (Adaptive
-                  Instruction & Misconception Engine), presented to national
-                  leadership and 14 state education inspectors
-                </li>
-                <li>
-                  Built Loom workflow orchestration engine with deterministic
-                  execution and event-sourced replay capabilities
-                </li>
-                <li>
-                  Guide system design decisions including service decomposition,
-                  data architecture, and observability strategies for
-                  mission-critical applications
-                </li>
-              </ul>
-
-              <div class="sub-role">
-                Associate Software Engineer (June 2024 – January 2025)
-              </div>
-              <ul>
-                <li>
-                  Implemented core system components for enterprise applications
-                  handling 100K+ daily transactions
-                </li>
-                <li>
-                  Solved complex backend engineering problems involving
-                  integrations and data pipelines, reducing processing time by
-                  40%
-                </li>
-                <li>
-                  Worked on distributed application components and
-                  performance-sensitive backend services with sub-100ms response
-                  times
-                </li>
-                <li>
-                  Contributed to codebase modernization efforts improving
-                  maintainability and reducing technical debt
-                </li>
-              </ul>
+          <div class="job">
+            <div class="job-header">
+              <div class="job-title">Solution Architect</div>
+              <div class="company">Brainium Information Technologies Pvt Ltd</div>
+              <div class="date">June 2024 – Present</div>
             </div>
+            <div class="sub-role">Solution Architect (January 2025 – Present)</div>
+            <ul>
+              <li>Lead architecture design for enterprise software systems and cloud-native applications serving 50,000+ users</li>
+              <li>Design scalable backend architectures and distributed workflows with 99.9% uptime requirements</li>
+              <li>Develop AI-assisted systems including AIME (Adaptive Instruction & Misconception Engine), presented to national leadership and 14 state education inspectors</li>
+              <li>Built Loom workflow orchestration engine with deterministic execution and event-sourced replay capabilities</li>
+              <li>Guide system design decisions including service decomposition, data architecture, and observability strategies for mission-critical applications</li>
+            </ul>
+            <div class="sub-role">Associate Software Engineer (June 2024 – January 2025)</div>
+            <ul>
+              <li>Implemented core system components for enterprise applications handling 100K+ daily transactions</li>
+              <li>Solved complex backend engineering problems involving integrations and data pipelines, reducing processing time by 40%</li>
+              <li>Worked on distributed application components and performance-sensitive backend services with sub-100ms response times</li>
+              <li>Contributed to codebase modernization efforts improving maintainability and reducing technical debt</li>
+            </ul>
+          </div>
 
-            <div class="job">
-              <div class="job-header">
-                <div class="job-title">Full Stack Developer</div>
-                <div class="company">IGLOBAL IMPACTS ITES Pvt Ltd</div>
-                <div class="date">June 2022 – June 2024</div>
-              </div>
-              <ul>
-                <li>
-                  Designed and maintained scalable web applications and backend
-                  services supporting 10,000+ concurrent users
-                </li>
-                <li>
-                  Built and maintained CI/CD pipelines reducing deployment time
-                  by 50% and deployment errors by 90%
-                </li>
-                <li>
-                  Led software releases improving application performance by 40%
-                  and reducing page load times by 30%
-                </li>
-                <li>
-                  Participated in technical hiring and engineering evaluation
-                  processes, conducting 30+ technical interviews
-                </li>
-                <li>
-                  Implemented production-grade RESTful APIs and GraphQL services
-                  with 99.5% uptime and sub-200ms response times
-                </li>
-                <li>
-                  Mentored junior developers on best practices in code
-                  versioning, testing, and system design
-                </li>
-              </ul>
+          <div class="job">
+            <div class="job-header">
+              <div class="job-title">Full Stack Developer</div>
+              <div class="company">IGLOBAL IMPACTS ITES Pvt Ltd</div>
+              <div class="date">June 2022 – June 2024</div>
             </div>
+            <ul>
+              <li>Designed and maintained scalable web applications and backend services supporting 10,000+ concurrent users</li>
+              <li>Built and maintained CI/CD pipelines reducing deployment time by 50% and deployment errors by 90%</li>
+              <li>Led software releases improving application performance by 40% and reducing page load times by 30%</li>
+              <li>Participated in technical hiring and engineering evaluation processes, conducting 30+ technical interviews</li>
+              <li>Implemented production-grade RESTful APIs and GraphQL services with 99.5% uptime and sub-200ms response times</li>
+              <li>Mentored junior developers on best practices in code versioning, testing, and system design</li>
+            </ul>
+          </div>
 
-            <div class="job">
-              <div class="job-header">
-                <div class="job-title">Freelance Software Developer</div>
-                <div class="date">August 2019 – June 2022</div>
-              </div>
-              <ul>
-                <li>
-                  Delivered 25+ end-to-end web application projects for
-                  international clients across 8 countries
-                </li>
-                <li>
-                  Designed full-stack systems from requirement gathering to
-                  deployment with 100% on-time delivery rate
-                </li>
-                <li>
-                  Built scalable backend APIs serving 50K+ requests per day with
-                  optimized frontend achieving 95+ Lighthouse scores
-                </li>
-                <li>
-                  Maintained production deployments and resolved complex
-                  technical issues with average resolution time under 4 hours
-                </li>
-                <li>
-                  Achieved 5.0/5.0 client satisfaction rating with multiple
-                  recurring clients
-                </li>
-              </ul>
+          <div class="job">
+            <div class="job-header">
+              <div class="job-title">Freelance Software Developer</div>
+              <div class="date">August 2019 – June 2022</div>
             </div>
-          </section>
+            <ul>
+              <li>Delivered 25+ end-to-end web application projects for international clients across 8 countries</li>
+              <li>Designed full-stack systems from requirement gathering to deployment with 100% on-time delivery rate</li>
+              <li>Built scalable backend APIs serving 50K+ requests per day with optimized frontend achieving 95+ Lighthouse scores</li>
+              <li>Maintained production deployments and resolved complex technical issues with average resolution time under 4 hours</li>
+              <li>Achieved 5.0/5.0 client satisfaction rating with multiple recurring clients</li>
+            </ul>
+          </div>
+        </section>
 
-          <!-- Key Projects -->
-          <section class="section">
-            <h2 class="section-title">Key Projects</h2>
-
-            <div class="project">
-              <div class="project-title">
-                AIME <span style="color: var(--primary); font-weight: 400;">— Adaptive Instruction & Misconception Engine</span>
-              </div>
-              <div class="project-desc">
-                AI-powered learning platform generating personalized lessons
-                through interactive workflows
-              </div>
-              <ul>
-                <li>
-                  Generates structured lessons dynamically from curriculum
-                  inputs
-                </li>
-                <li>
-                  Captures learner interaction evidence to detect misconceptions
-                  and adapt lesson flow
-                </li>
-                <li>
-                  Introduced Lesson Runtime Format (LRF) for replayable lesson
-                  execution
-                </li>
-                <li>
-                  Presented to national leadership and 14 state education
-                  inspectors with positive reception
-                </li>
-              </ul>
-              <div class="tech-stack">
-                AI Systems, Workflow Orchestration, Python
+        <!-- Technical Skills -->
+        <section class="section">
+          <h2 class="section-title">Technical Skills</h2>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <div class="skill-category-title">Languages</div>
+              <div class="skill-list">
+                <span class="skill-tag">Rust</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Java</span>
               </div>
             </div>
-
-            <div class="project">
-              <div class="project-title">
-                Loom <span style="color: var(--primary); font-weight: 400;">— Durable Workflow Execution Engine</span>
-              </div>
-              <div class="project-desc">
-                Workflow orchestration engine for deterministic execution of
-                long-running processes
-              </div>
-              <ul>
-                <li>
-                  Implements event-sourced workflow execution and deterministic
-                  replay
-                </li>
-                <li>
-                  Supports fault-tolerant workflow execution with state
-                  reconstruction from event logs
-                </li>
-                <li>
-                  Designed for distributed systems requiring reliable
-                  orchestration of asynchronous tasks
-                </li>
-              </ul>
-              <div class="tech-stack">
-                Python, Event Sourcing, Distributed Systems
+            <div class="skill-category">
+              <div class="skill-category-title">Backend</div>
+              <div class="skill-list">
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Django</span>
+                <span class="skill-tag">Express.js</span>
+                <span class="skill-tag">REST APIs</span>
+                <span class="skill-tag">GraphQL</span>
               </div>
             </div>
-
-            <div class="project">
-              <div class="project-title">
-                Ironwatch <span style="color: var(--primary); font-weight: 400;">— DDoS Mitigation System</span>
-              </div>
-              <div class="project-desc">
-                Adaptive runtime-based DDoS mitigation deployed on production
-                infrastructure
-              </div>
-              <ul>
-                <li>
-                  Detects abnormal traffic spikes using threshold-based
-                  monitoring
-                </li>
-                <li>
-                  Uses AbuseIPDB reputation data to evaluate malicious IPs
-                </li>
-                <li>
-                  Reduced attack traffic by approximately 80% in production
-                  deployment
-                </li>
-              </ul>
-              <div class="tech-stack">Rust, Network Monitoring, Security</div>
-            </div>
-
-            <div class="project">
-              <div class="project-title">
-                OxideDB <span style="color: var(--primary); font-weight: 400;">— LLM-Powered Database System</span>
-              </div>
-              <div class="project-desc">
-                SQLite with natural language querying via gRPC
-              </div>
-              <ul>
-                <li>
-                  Dual query modes supporting SQL and natural language queries via LLM integration
-                </li>
-                <li>
-                  High-performance gRPC protocol with Protocol Buffers for binary communication
-                </li>
-                <li>
-                  Knex.js-inspired SDKs for Rust, Python, and JavaScript/TypeScript
-                </li>
-                <li>
-                  Multi-tenant architecture with namespace isolation and JWT authentication
-                </li>
-                <li>
-                  Full SQLite support including CTEs, window functions, and triggers
-                </li>
-              </ul>
-              <div class="tech-stack">Rust, SQLite, LLM, gRPC, Protocol Buffers</div>
-            </div>
-
-            <div class="project">
-              <div class="project-title">
-                cvxtract <span style="color: var(--primary); font-weight: 400;">— Schema-Driven Document Extraction</span>
-              </div>
-              <div class="project-desc">
-                Rust library for LLM-powered structured data extraction
-              </div>
-              <ul>
-                <li>
-                  Document processing pipeline supporting PDF, DOCX, HTML, and TXT inputs
-                </li>
-                <li>
-                  Typed structured extraction using Serde and JSON Schema for compile-time validation
-                </li>
-                <li>
-                  Provider-agnostic LLM integration with local inference (llama.cpp) and cloud API support
-                </li>
-                <li>
-                  Custom schema extraction enabling direct deserialization into Rust structs
-                </li>
-                <li>
-                  Modular architecture with document loaders, extraction pipeline, and model abstraction
-                </li>
-              </ul>
-              <div class="tech-stack">Rust, LLM, Document Processing, Serde, JSON Schema</div>
-            </div>
-          </section>
-
-          <!-- Research -->
-          <section class="section">
-            <h2 class="section-title">Research & Publications</h2>
-            <div class="research-paper">
-              <div class="paper-title">
-                Bridging Analytics and Semantics: A Hybrid Database Approach to
-                Retrieval-Augmented Generation
-              </div>
-              <div class="paper-meta">
-                Co-author | Zenodo Repository, September 2025<br />
-                DOI:
-                <a
-                  href="https://doi.org/10.5281/zenodo.17018699"
-                  target="_blank"
-                  >10.5281/zenodo.17018699</a
-                >
-                | Source:
-                <a
-                  href="https://github.com/satadeep3927/hybridrag"
-                  target="_blank"
-                  >github.com/satadeep3927/hybridrag</a
-                >
-              </div>
-              <ul style="list-style: none; padding-left: 0; margin-top: 6px">
-                <li
-                  style="
-                    padding-left: 12px;
-                    margin-bottom: 3px;
-                    font-size: 8.5pt;
-                    color: var(--text-secondary);
-                    position: relative;
-                    line-height: 1.4;
-                  "
-                >
-                  <span
-                    style="position: absolute; left: 0; color: var(--primary)"
-                    >•</span
-                  >
-                  Combines vector search with semantic reasoning for improved
-                  retrieval accuracy
-                </li>
-                <li
-                  style="
-                    padding-left: 12px;
-                    margin-bottom: 3px;
-                    font-size: 8.5pt;
-                    color: var(--text-secondary);
-                    position: relative;
-                    line-height: 1.4;
-                  "
-                >
-                  <span
-                    style="position: absolute; left: 0; color: var(--primary)"
-                    >•</span
-                  >
-                  Demonstrated 18% improvement in relevance accuracy over
-                  vector-only baselines
-                </li>
-              </ul>
-            </div>
-          </section>
-        </div>
-
-        <!-- Right Column -->
-        <div class="sidebar">
-          <!-- Technical Skills -->
-          <section class="section">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-              <div class="skill-category">
-                <div class="skill-category-title">Languages</div>
-                <div class="skill-list">
-                  <span class="skill-tag">Rust</span>
-                  <span class="skill-tag">C++</span>
-                  <span class="skill-tag">Python</span>
-                  <span class="skill-tag">TypeScript</span>
-                  <span class="skill-tag">JavaScript</span>
-                  <span class="skill-tag">Java</span>
-                </div>
-              </div>
-
-              <div class="skill-category">
-                <div class="skill-category-title">Backend</div>
-                <div class="skill-list">
-                  <span class="skill-tag">Node.js</span>
-                  <span class="skill-tag">Django</span>
-                  <span class="skill-tag">Express.js</span>
-                  <span class="skill-tag">REST APIs</span>
-                  <span class="skill-tag">GraphQL</span>
-                </div>
-              </div>
-
-              <div class="skill-category">
-                <div class="skill-category-title">Frontend</div>
-                <div class="skill-list">
-                  <span class="skill-tag">React</span>
-                  <span class="skill-tag">Next.js</span>
-                  <span class="skill-tag">Vue.js</span>
-                  <span class="skill-tag">Tailwind</span>
-                </div>
-              </div>
-
-              <div class="skill-category">
-                <div class="skill-category-title">Databases</div>
-                <div class="skill-list">
-                  <span class="skill-tag">PostgreSQL</span>
-                  <span class="skill-tag">MongoDB</span>
-                  <span class="skill-tag">MySQL</span>
-                  <span class="skill-tag">Redis</span>
-                  <span class="skill-tag">SurrealDB</span>
-                </div>
-              </div>
-
-              <div class="skill-category">
-                <div class="skill-category-title">DevOps & Tools</div>
-                <div class="skill-list">
-                  <span class="skill-tag">Docker</span>
-                  <span class="skill-tag">AWS</span>
-                  <span class="skill-tag">CI/CD</span>
-                  <span class="skill-tag">Git</span>
-                  <span class="skill-tag">GitHub Actions</span>
-                  <span class="skill-tag">Jenkins</span>
-                </div>
-              </div>
-
-              <div class="skill-category">
-                <div class="skill-category-title">Specialized</div>
-                <div class="skill-list">
-                  <span class="skill-tag">Event Sourcing</span>
-                  <span class="skill-tag">Workflow Orchestration</span>
-                  <span class="skill-tag">Distributed Systems</span>
-                  <span class="skill-tag">Systems Programming</span>
-                </div>
+            <div class="skill-category">
+              <div class="skill-category-title">Frontend</div>
+              <div class="skill-list">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Next.js</span>
+                <span class="skill-tag">Vue.js</span>
+                <span class="skill-tag">Tailwind</span>
               </div>
             </div>
-          </section>
+            <div class="skill-category">
+              <div class="skill-category-title">Databases</div>
+              <div class="skill-list">
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">Redis</span>
+                <span class="skill-tag">SurrealDB</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <div class="skill-category-title">DevOps & Tools</div>
+              <div class="skill-list">
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">CI/CD</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">GitHub Actions</span>
+                <span class="skill-tag">Jenkins</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <div class="skill-category-title">Specialized</div>
+              <div class="skill-list">
+                <span class="skill-tag">Event Sourcing</span>
+                <span class="skill-tag">Workflow Orchestration</span>
+                <span class="skill-tag">Distributed Systems</span>
+                <span class="skill-tag">Systems Programming</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
-          <!-- Key Achievements -->
-          <section class="section">
-            <h2 class="section-title">Key Achievements</h2>
-            <ul class="achievement-list">
-              <li>
-                <strong>Published Research:</strong> Co-authored peer-reviewed
-                research on hybrid database architectures for RAG systems
+        <!-- Key Projects -->
+        <section class="section">
+          <h2 class="section-title">Key Projects</h2>
+
+          <div class="project">
+            <div class="project-title">AIME <span style="color: var(--primary); font-weight: 400;">— Adaptive Instruction & Misconception Engine</span></div>
+            <ul>
+              <li>Generates structured lessons dynamically from curriculum inputs</li>
+              <li>Captures learner interaction evidence to detect misconceptions and adapt lesson flow</li>
+              <li>Introduced Lesson Runtime Format (LRF) for replayable lesson execution</li>
+              <li>Presented to national leadership and 14 state education inspectors with positive reception</li>
+            </ul>
+            <div class="tech-stack">AI Systems, Workflow Orchestration, Python</div>
+          </div>
+
+          <div class="project">
+            <div class="project-title">Loom <span style="color: var(--primary); font-weight: 400;">— Durable Workflow Execution Engine</span></div>
+            <ul>
+              <li>Implements event-sourced workflow execution and deterministic replay</li>
+              <li>Supports fault-tolerant workflow execution with state reconstruction from event logs</li>
+              <li>Designed for distributed systems requiring reliable orchestration of asynchronous tasks</li>
+            </ul>
+            <div class="tech-stack">Python, Event Sourcing, Distributed Systems</div>
+          </div>
+
+          <div class="project">
+            <div class="project-title">Ironwatch <span style="color: var(--primary); font-weight: 400;">— DDoS Mitigation System</span></div>
+            <ul>
+              <li>Detects abnormal traffic spikes using threshold-based monitoring</li>
+              <li>Uses AbuseIPDB reputation data to evaluate malicious IPs</li>
+              <li>Reduced attack traffic by approximately 80% in production deployment</li>
+            </ul>
+            <div class="tech-stack">Rust, Network Monitoring, Security</div>
+          </div>
+
+          <div class="project">
+            <div class="project-title">OxideDB <span style="color: var(--primary); font-weight: 400;">— LLM-Powered Database System</span></div>
+            <ul>
+              <li>Dual query modes supporting SQL and natural language queries via LLM integration</li>
+              <li>High-performance gRPC protocol with Protocol Buffers for binary communication</li>
+              <li>Knex.js-inspired SDKs for Rust, Python, and JavaScript/TypeScript</li>
+              <li>Multi-tenant architecture with namespace isolation and JWT authentication</li>
+              <li>Full SQLite support including CTEs, window functions, and triggers</li>
+            </ul>
+            <div class="tech-stack">Rust, SQLite, LLM, gRPC, Protocol Buffers</div>
+          </div>
+
+          <div class="project">
+            <div class="project-title">cvxtract <span style="color: var(--primary); font-weight: 400;">— Schema-Driven Document Extraction</span></div>
+            <ul>
+              <li>Document processing pipeline supporting PDF, DOCX, HTML, and TXT inputs</li>
+              <li>Typed structured extraction using Serde and JSON Schema for compile-time validation</li>
+              <li>Provider-agnostic LLM integration with local inference (llama.cpp) and cloud API support</li>
+              <li>Custom schema extraction enabling direct deserialization into Rust structs</li>
+              <li>Modular architecture with document loaders, extraction pipeline, and model abstraction</li>
+            </ul>
+            <div class="tech-stack">Rust, LLM, Document Processing, Serde, JSON Schema</div>
+          </div>
+        </section>
+
+        <!-- Key Achievements -->
+        <section class="section">
+          <h2 class="section-title">Key Achievements</h2>
+          <ul class="achievement-list">
+            <li><strong>Published Research:</strong> Co-authored peer-reviewed research on hybrid database architectures for RAG systems</li>
+            <li><strong>Production Impact:</strong> Deployed DDoS mitigation system reducing attack traffic by 80%</li>
+            <li><strong>Leadership Recognition:</strong> Presented AIME platform to national leadership and 14 state education inspectors</li>
+            <li><strong>Career Progression:</strong> Advanced from Freelancer → Full Stack → Solution Architect in 5 years</li>
+            <li><strong>Performance Excellence:</strong> Delivered systems with 99.9% uptime and sub-100ms latency</li>
+            <li><strong>Open Source:</strong> Maintain 15+ active repositories with global contributions</li>
+          </ul>
+        </section>
+
+        <!-- Research & Publications -->
+        <section class="section">
+          <h2 class="section-title">Research & Publications</h2>
+          <div class="research-paper">
+            <div class="paper-title">Bridging Analytics and Semantics: A Hybrid Database Approach to Retrieval-Augmented Generation</div>
+            <div class="paper-meta">
+              Co-author | Zenodo Repository, September 2025<br />
+              DOI: <a href="https://doi.org/10.5281/zenodo.17018699" target="_blank">10.5281/zenodo.17018699</a>
+              | Source: <a href="https://github.com/satadeep3927/hybridrag" target="_blank">github.com/satadeep3927/hybridrag</a>
+            </div>
+            <ul style="list-style: none; padding-left: 0; margin-top: 6px">
+              <li style="padding-left: 12px; margin-bottom: 3px; font-size: 8.5pt; color: var(--text-secondary); position: relative; line-height: 1.4;">
+                <span style="position: absolute; left: 0; color: var(--primary)">•</span>
+                Combines vector search with semantic reasoning for improved retrieval accuracy
               </li>
-              <li>
-                <strong>Production Impact:</strong> Deployed DDoS mitigation
-                system reducing attack traffic by 80%
-              </li>
-              <li>
-                <strong>Leadership Recognition:</strong> Presented AIME platform
-                to national leadership and 14 state education inspectors
-              </li>
-              <li>
-                <strong>Career Progression:</strong> Advanced from Freelancer →
-                Full Stack → Solution Architect in 5 years
-              </li>
-              <li>
-                <strong>Performance Excellence:</strong> Delivered systems with
-                99.9% uptime and sub-100ms latency
-              </li>
-              <li>
-                <strong>Open Source:</strong> Maintain 15+ active repositories
-                with global contributions
+              <li style="padding-left: 12px; margin-bottom: 3px; font-size: 8.5pt; color: var(--text-secondary); position: relative; line-height: 1.4;">
+                <span style="position: absolute; left: 0; color: var(--primary)">•</span>
+                Demonstrated 18% improvement in relevance accuracy over vector-only baselines
               </li>
             </ul>
-          </section>
+          </div>
+        </section>
 
-          <!-- Education -->
-          <section class="section">
-            <h2 class="section-title">Education</h2>
-            <div class="education-item">
-              <div class="degree">Bachelor of Science (Mathematics)</div>
-              <div class="institution">Brahmananda Keshab Chandra College</div>
-              <div class="date">2019 – 2022</div>
-            </div>
-          </section>
+        <!-- Education -->
+        <section class="section">
+          <h2 class="section-title">Education</h2>
+          <div class="education-item">
+            <div class="degree">Bachelor of Science (Mathematics)</div>
+            <div class="institution">Brahmananda Keshab Chandra College</div>
+            <div class="date">2019 – 2022</div>
+          </div>
+        </section>
 
-          <!-- Languages -->
-          <section class="section">
-            <h2 class="section-title">Languages</h2>
-            <ul style="list-style: none; padding: 0">
-              <li
-                style="
-                  padding-left: 15px;
-                  margin-bottom: 4px;
-                  font-size: 9pt;
-                  color: var(--text-secondary);
-                  position: relative;
-                "
-              >
-                <span style="position: absolute; left: 0; color: var(--primary)"
-                  >▹</span
-                >
-                English (Fluent)
-              </li>
-              <li
-                style="
-                  padding-left: 15px;
-                  margin-bottom: 4px;
-                  font-size: 9pt;
-                  color: var(--text-secondary);
-                  position: relative;
-                "
-              >
-                <span style="position: absolute; left: 0; color: var(--primary)"
-                  >▹</span
-                >
-                Bengali (Native)
-              </li>
-              <li
-                style="
-                  padding-left: 15px;
-                  margin-bottom: 4px;
-                  font-size: 9pt;
-                  color: var(--text-secondary);
-                  position: relative;
-                "
-              >
-                <span style="position: absolute; left: 0; color: var(--primary)"
-                  >▹</span
-                >
-                Hindi (Fluent)
-              </li>
-            </ul>
-          </section>
-        </div>
+        <!-- Languages -->
+        <section class="section">
+          <h2 class="section-title">Languages</h2>
+          <ul style="list-style: none; padding: 0">
+            <li style="padding-left: 15px; margin-bottom: 4px; font-size: 9pt; color: var(--text-secondary); position: relative;">
+              <span style="position: absolute; left: 0; color: var(--primary)">▹</span>
+              English (Fluent)
+            </li>
+            <li style="padding-left: 15px; margin-bottom: 4px; font-size: 9pt; color: var(--text-secondary); position: relative;">
+              <span style="position: absolute; left: 0; color: var(--primary)">▹</span>
+              Bengali (Native)
+            </li>
+            <li style="padding-left: 15px; margin-bottom: 4px; font-size: 9pt; color: var(--text-secondary); position: relative;">
+              <span style="position: absolute; left: 0; color: var(--primary)">▹</span>
+              Hindi (Fluent)
+            </li>
+          </ul>
+        </section>
       </div>
     </div>
   </body>
