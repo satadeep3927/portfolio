@@ -172,19 +172,18 @@
       }
 
       .job li {
-        padding-left: 15px;
+        display: flex;
+        gap: 8px;
         margin-bottom: 4px;
         font-size: 9pt;
         color: var(--text-secondary);
-        position: relative;
         line-height: 1.5;
       }
 
       .job li::before {
         content: "▹";
-        position: absolute;
-        left: 0;
         color: var(--primary);
+        flex-shrink: 0;
       }
 
       /* Projects */
@@ -212,20 +211,19 @@
       }
 
       .project li {
-        padding-left: 12px;
+        display: flex;
+        gap: 8px;
         margin-bottom: 3px;
         font-size: 8.5pt;
         color: var(--text-secondary);
-        position: relative;
         line-height: 1.4;
       }
 
       .project li::before {
         content: "•";
-        position: absolute;
-        left: 0;
         color: var(--primary);
         font-weight: bold;
+        flex-shrink: 0;
       }
 
       .tech-stack {
@@ -274,19 +272,18 @@
       }
 
       .achievement-list li {
-        padding-left: 15px;
+        display: flex;
+        gap: 8px;
         margin-bottom: 6px;
         font-size: 9pt;
         color: var(--text-secondary);
-        position: relative;
         line-height: 1.5;
       }
 
       .achievement-list li::before {
         content: "★";
-        position: absolute;
-        left: 0;
         color: var(--primary);
+        flex-shrink: 0;
       }
 
       .achievement-list strong {
@@ -642,12 +639,12 @@
               | Source: <a href="https://github.com/satadeep3927/hybridrag" target="_blank">github.com/satadeep3927/hybridrag</a>
             </div>
             <ul style="list-style: none; padding-left: 0; margin-top: 6px">
-              <li style="padding-left: 12px; margin-bottom: 3px; font-size: 8.5pt; color: var(--text-secondary); position: relative; line-height: 1.4;">
-                <span style="position: absolute; left: 0; color: var(--primary)">•</span>
+              <li style="display: flex; gap: 8px; margin-bottom: 3px; font-size: 8.5pt; color: var(--text-secondary); line-height: 1.4;">
+                <span style="color: var(--primary); flex-shrink: 0;">•</span>
                 Combines vector search with semantic reasoning for improved retrieval accuracy
               </li>
-              <li style="padding-left: 12px; margin-bottom: 3px; font-size: 8.5pt; color: var(--text-secondary); position: relative; line-height: 1.4;">
-                <span style="position: absolute; left: 0; color: var(--primary)">•</span>
+              <li style="display: flex; gap: 8px; margin-bottom: 3px; font-size: 8.5pt; color: var(--text-secondary); line-height: 1.4;">
+                <span style="color: var(--primary); flex-shrink: 0;">•</span>
                 Demonstrated 18% improvement in relevance accuracy over vector-only baselines
               </li>
             </ul>
@@ -668,16 +665,16 @@
         <section class="section">
           <h2 class="section-title">Languages</h2>
           <ul style="list-style: none; padding: 0">
-            <li style="padding-left: 15px; margin-bottom: 4px; font-size: 9pt; color: var(--text-secondary); position: relative;">
-              <span style="position: absolute; left: 0; color: var(--primary)">▹</span>
+            <li style="display: flex; gap: 8px; margin-bottom: 4px; font-size: 9pt; color: var(--text-secondary);">
+              <span style="color: var(--primary); flex-shrink: 0;">▹</span>
               English (Fluent)
             </li>
-            <li style="padding-left: 15px; margin-bottom: 4px; font-size: 9pt; color: var(--text-secondary); position: relative;">
-              <span style="position: absolute; left: 0; color: var(--primary)">▹</span>
+            <li style="display: flex; gap: 8px; margin-bottom: 4px; font-size: 9pt; color: var(--text-secondary);">
+              <span style="color: var(--primary); flex-shrink: 0;">▹</span>
               Bengali (Native)
             </li>
-            <li style="padding-left: 15px; margin-bottom: 4px; font-size: 9pt; color: var(--text-secondary); position: relative;">
-              <span style="position: absolute; left: 0; color: var(--primary)">▹</span>
+            <li style="display: flex; gap: 8px; margin-bottom: 4px; font-size: 9pt; color: var(--text-secondary);">
+              <span style="color: var(--primary); flex-shrink: 0;">▹</span>
               Hindi (Fluent)
             </li>
           </ul>
