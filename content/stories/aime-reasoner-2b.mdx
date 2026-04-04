@@ -1,0 +1,65 @@
+---
+title: "AIME-Reasoner-2B: Intelligence That Works Through Problems"
+subtitle: "What happens when you stop waiting for connectivity and start thinking locally"
+date: "2026-03"
+project: "aime"
+featured: true
+---
+
+### The Problem Nobody Talks About
+
+Most AI progress assumes one thing silently: that there is a server somewhere, waiting to respond. For schools in rural India, for field researchers in low-connectivity zones, for students who study after the router goes off — that assumption breaks everything.
+
+AIME-Reasoner-2B was built for the moments when the cloud is not an option.
+
+### What It Is
+
+A compact language model shaped through distillation from multiple advanced reasoning systems — including models in the Llama 4 family and Opus-class reasoning chains. It was not trained only on answers. It was trained on *how answers are formed*.
+
+Different reasoning styles were brought together, aligned, and compressed into a single model small enough to run on a laptop CPU, an old Android tablet, or a Raspberry Pi tucked into a classroom shelf.
+
+What emerged is not just smaller. It is more deliberate.
+
+### Think Cache: Reasoning That Doesn't Start From Zero
+
+Every time a standard model is asked a question, it begins from scratch — re-processing the mechanics of how to think before it can think at all.
+
+AIME-Reasoner-2B introduces a different approach: **Think Cache** — a pre-built reasoning prefix baked into the model's KV cache before inference begins. Instead of warming up the reasoning engine on every prompt, the model starts *already in reasoning mode*.
+
+- Faster first-token response on constrained hardware
+- Consistent reasoning posture across all queries
+- No dependency on large context windows to prime behavior
+- Stable performance whether answering the first question or the fiftieth
+
+The Think Cache is the result of distilling thousands of high-quality reasoning traces into a reusable starting state — so that every student gets the same quality of structured thinking, regardless of device.
+
+### Think Book: Lessons That Live on the Device
+
+A Think Cache tells the model *how* to reason. A Think Book tells it *what* to reason about.
+
+**Think Books** are structured offline knowledge bundles — domain-specific reasoning packs loaded into AIME-Reasoner-2B without any internet connection:
+
+- Curated problem sets and worked examples
+- Subject-specific reasoning traces (mathematics, logic, science)
+- Pre-structured question-answer flows for guided learning
+- Adaptive difficulty scaffolding for self-paced study
+
+A teacher can author a Think Book using a simple local tool, copy it to a USB drive, and deploy it across an entire classroom. The model reads the Think Book. The student asks the question. The reasoning happens on the device.
+
+No API call. No latency. No monthly subscription. No data leaving the room.
+
+### The Full Picture
+
+Together, Think Cache and Think Book enable something that has not existed before at this scale: **a fully offline AI tutoring infrastructure**.
+
+A student opens their device. The model is already loaded. The Think Book for today's lesson is already there. They ask about fractions, or logic, or percentages. The model works through the answer step by step — not because it retrieves a cached response, but because it has internalized the structure of good reasoning and has the subject context to apply it.
+
+The path to the answer is visible. The student can follow it. That is the point.
+
+### A Different Kind of Infrastructure
+
+Most AI infrastructure is designed to scale *up* — more GPUs, more bandwidth, more compute. AIME-Reasoner-2B is designed to scale *out* — to reach the places that larger systems cannot.
+
+It does not require a data center. It does not require a stable connection. It does not require a procurement budget that most schools do not have.
+
+It requires a device, a Think Book, and a student with a question. That is enough.

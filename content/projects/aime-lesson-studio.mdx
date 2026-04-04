@@ -1,0 +1,31 @@
+---
+title: "AIME Lesson Studio — Cross-Platform Desktop App"
+description: "Tauri + Rust desktop application for teachers to view, edit, and print lessons and assessments — ships on Linux, ChromeOS, Windows, and macOS"
+tech:
+  [
+    "Tauri",
+    "Rust",
+    "React",
+    "TypeScript",
+    "Desktop App",
+    "Cross-Platform",
+  ]
+github: "https://github.com/satadeep3927/aime-lessonreader"
+demo: ""
+date: "2026-04"
+featured: true
+---
+
+Cross-platform desktop application built on Tauri + Rust for teachers to view, edit, and print AIME lesson packs. Ships as native installers across Linux (.deb, .rpm, AppImage), ChromeOS/ARM64, Windows (.msi, .exe), and macOS (.dmg). Consumed by educators in African classrooms — currently on v2.0.0 "Calabash".
+
+Uses `@aime.ai/renderer-react` for slide presentation and editing, with a custom `.aimepack` file format that bundles slides, assessments, images, and metadata into a single portable offline file.
+
+### Key Capabilities
+
+- **Assessment Editor**: Collapsible card-based editor for questions, options, marks, answers, and bloom level metadata — changes save directly into the `.aimepack` file
+- **Assessment Viewer**: Read-only markdown-rendered view with answer toggling, homework display, and metadata strips — teachers review exactly what students will see
+- **Smart Print System**: Replaced `@react-pdf/renderer` with OS print dialog via hidden iframe — handles markdown, page breaks, and Tauri webview constraints while stripping teacher-only data from student output
+- **Slide Editing**: Edit slide content directly in the presentation viewer powered by `@aime.ai/renderer-react`, with AIME Image Library integration for curated educational images
+- **AIME Image Library**: Cloud-hosted searchable image collection for African educational contexts — browse, search, or upload local files, with automatic embedding into the `.aimepack` for offline portability
+- **i18n**: Full English and French localization across the entire interface
+- **Cross-Platform Distribution**: Native installers for Linux/Debian, RPM, AppImage, ARM64 Chromebooks, Windows MSI/EXE, and macOS DMG — with a one-line curl installer for Linux/ChromeOS

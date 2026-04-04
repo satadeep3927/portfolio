@@ -6,6 +6,7 @@ const contentDirectory = path.join(process.cwd(), "content");
 
 export interface FrontMatter {
   title: string;
+  subtitle?: string;
   company?: string;
   start?: string;
   end?: string;
@@ -18,6 +19,8 @@ export interface FrontMatter {
   tech?: string[];
   description?: string;
   date?: string;
+  project?: string;
+  featured?: boolean;
 }
 
 export interface ContentItem {
@@ -27,7 +30,7 @@ export interface ContentItem {
 }
 
 export function getContentByType(
-  type: "experience" | "projects" | "research",
+  type: "experience" | "projects" | "research" | "stories",
 ): ContentItem[] {
   const typeDirectory = path.join(contentDirectory, type);
 
@@ -75,5 +78,6 @@ export function getAllContent() {
     experience: getContentByType("experience"),
     projects: getContentByType("projects"),
     research: getContentByType("research"),
+    stories: getContentByType("stories"),
   };
 }

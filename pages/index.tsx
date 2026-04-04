@@ -15,6 +15,9 @@ import {
   ChevronLeft,
   ChevronRight,
   Eye,
+  BookOpen,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { GetStaticProps } from "next";
 
@@ -27,6 +30,7 @@ const firaCode = Fira_Code({
 interface ContentItem {
   frontMatter: {
     title: string;
+    subtitle?: string;
     company?: string;
     start?: string;
     end?: string;
@@ -38,6 +42,8 @@ interface ContentItem {
     authors?: string;
     pdf?: string;
     doi?: string;
+    project?: string;
+    featured?: boolean;
   };
   content: string;
 }
@@ -46,11 +52,15 @@ interface HomeProps {
   experience: ContentItem[];
   projects: ContentItem[];
   research: ContentItem[];
+  stories: ContentItem[];
 }
 
-export default function Home({ experience, projects, research }: HomeProps) {
+export default function Home({ experience, projects, research, stories }: HomeProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedProjects, setExpandedProjects] = useState<{
+    [key: number]: boolean;
+  }>({});
+  const [expandedStories, setExpandedStories] = useState<{
     [key: number]: boolean;
   }>({});
   const projectsPerPage = 4;
@@ -239,6 +249,9 @@ export default function Home({ experience, projects, research }: HomeProps) {
                     "Cloud Architecture",
                     "Developer Tooling",
                     "Infrastructure Monitoring",
+                    "Model Distillation",
+                    "Edge AI & Offline Inference",
+                    "KV Cache Optimization",
                   ].map((skill) => (
                     <div key={skill} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
@@ -441,8 +454,128 @@ export default function Home({ experience, projects, research }: HomeProps) {
           </div>
         </section>
 
+        {/* Stories Section */}
+        {stories.length > 0 && (
+          <section className="py-20 px-4 bg-black/20">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-4xl font-bold mb-4 text-center">
+                <span className="text-yellow-500">&gt;</span> STORIES/
+              </h2>
+              <p className="text-center text-gray-400 mb-12 text-lg">
+                Deep dives into the engineering behind the work
+              </p>
+              <div className="space-y-8">
+                {stories.map((story, index) => {
+                  const isExpanded = expandedStories[index];
+                  const paragraphs = story.content
+                    .split("\n")
+                    .filter((line: string) => line.trim() !== "");
+                  const previewParagraphs = paragraphs.slice(0, 6);
+                  const displayParagraphs = isExpanded ? paragraphs : previewParagraphs;
+                  const hasMore = paragraphs.length > 6;
+
+                  return (
+                    <Card key={index} className="w-full">
+                      <Card.Header>
+                        <div className="flex items-start gap-4">
+                          <div className="p-2 bg-yellow-500/10 rounded-lg">
+                            <BookOpen className="w-6 h-6 text-yellow-400" />
+                          </div>
+                          <div className="flex-1">
+                            <Card.Title className="text-xl">
+                              {story.frontMatter.title}
+                            </Card.Title>
+                            {story.frontMatter.subtitle && (
+                              <Card.Description className="text-yellow-400/80 mt-1 italic">
+                                {story.frontMatter.subtitle}
+                              </Card.Description>
+                            )}
+                          </div>
+                        </div>
+                      </Card.Header>
+                      <Card.Content>
+                        <div className="text-gray-300 space-y-3 leading-relaxed">
+                          {displayParagraphs.map((line: string, lineIndex: number) => {
+                            // Render ### headings as styled headers
+                            if (line.trim().startsWith("### ")) {
+                              return (
+                                <h3
+                                  key={lineIndex}
+                                  className="text-lg font-bold text-yellow-400 mt-6 mb-2"
+                                >
+                                  {line.trim().replace(/^###\s*/, "")}
+                                </h3>
+                              );
+                            }
+                            // Render bold text within lines
+                            if (line.includes("**")) {
+                              const parts = line.split(/\*\*(.*?)\*\*/);
+                              return (
+                                <p key={lineIndex} className="text-sm">
+                                  {parts.map((part: string, i: number) =>
+                                    i % 2 === 1 ? (
+                                      <strong key={i} className="text-yellow-300">
+                                        {part}
+                                      </strong>
+                                    ) : (
+                                      <span key={i}>{part}</span>
+                                    )
+                                  )}
+                                </p>
+                              );
+                            }
+                            // Render list items
+                            if (line.trim().startsWith("- ")) {
+                              return (
+                                <div key={lineIndex} className="flex gap-2 text-sm pl-4">
+                                  <span className="text-yellow-500 flex-shrink-0">▹</span>
+                                  <span>{line.trim().replace(/^-\s*/, "")}</span>
+                                </div>
+                              );
+                            }
+                            return (
+                              <p key={lineIndex} className="text-sm">
+                                {line}
+                              </p>
+                            );
+                          })}
+                        </div>
+                        {hasMore && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              setExpandedStories((prev) => ({
+                                ...prev,
+                                [index]: !prev[index],
+                              }))
+                            }
+                            className="mt-6 text-yellow-400 border-yellow-400 hover:bg-yellow-400 hover:text-black"
+                          >
+                            {isExpanded ? (
+                              <>
+                                <ChevronUp className="w-4 h-4 mr-2" />
+                                Collapse Story
+                              </>
+                            ) : (
+                              <>
+                                <ChevronDown className="w-4 h-4 mr-2" />
+                                Read Full Story
+                              </>
+                            )}
+                          </Button>
+                        )}
+                      </Card.Content>
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Research Section */}
-        <section className="py-20 px-4 bg-black/20">
+        <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold mb-12 text-center">
               <span className="text-yellow-500">&gt;</span> RESEARCH &
@@ -609,13 +742,14 @@ export default function Home({ experience, projects, research }: HomeProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { experience, projects, research } = getAllContent();
+  const { experience, projects, research, stories } = getAllContent();
 
   return {
     props: {
       experience,
       projects,
       research,
+      stories,
     },
   };
 };

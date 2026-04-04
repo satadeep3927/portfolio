@@ -1,0 +1,31 @@
+---
+title: "@aime.ai/renderer-react — Lesson Renderer Component Library"
+description: "Composable React component library for rendering AIME lesson packs with slide presentation, BlockSuite whiteboard, inline editing, and full i18n/RTL support"
+tech:
+  [
+    "React",
+    "TypeScript",
+    "BlockSuite",
+    "Yjs",
+    "Component Library",
+    "npm Package",
+  ]
+github: ""
+demo: "https://www.npmjs.com/package/@aime.ai/renderer-react"
+date: "2026-04"
+featured: true
+---
+
+Published composable React component library for rendering structured educational lesson packs. Ships as `@aime.ai/renderer-react` on npm with 569+ weekly downloads and 13 versions. Later adopted as the presentation layer of the AIME learning platform.
+
+Designed around composability — every component is optional. Omit the whiteboard, drop the notes panel, compose only what you need. All state flows through two React contexts (`LessonPackContext` and `PresentationContext`) with zero prop drilling.
+
+### Key Capabilities
+
+- **Slide-Based Renderer**: Renders 20+ slide types (Title, Teach, Worked Example, Guided Practice, Misconception, Assessment, etc.) on a fixed 1280×720 canvas with automatic scaling
+- **Full Inline Editing System**: `EditableText`, `EditableMarkdown`, `EditableList`, `EditableImage` — primitives that swap between static display and live editing based on context, letting teachers edit lessons without leaving the viewer
+- **BlockSuite Whiteboard**: Edgeless whiteboard overlay using BlockSuite + Yjs for real-time annotations on slides, with binary canvas persistence via Yjs snapshots
+- **Presentation Mode**: Full-screen presentation with floating navigation, collapsible sidebar, speaker notes panel, and zoom controls (50–200%)
+- **i18n & RTL Support**: Full bidirectional text support with customizable labels — ships with English defaults, override any string via `LessonProvider` props
+- **Composable Architecture**: Every component reads from shared context — drop in `LessonProvider`, compose `SlideViewer`, `SlideSidebar`, `NotesPanel`, `BlockSuiteCanvas` in any layout
+- **Published npm Package**: MIT licensed, 13 versions shipped, TypeScript-first with full type declarations

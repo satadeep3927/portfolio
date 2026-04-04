@@ -1,0 +1,30 @@
+---
+title: "AIME-Reasoner-2B — Offline Reasoning Model"
+description: "Distilled 2B-parameter reasoning model with Think Cache and Think Book architecture for fully offline AI tutoring on CPU-only devices"
+tech:
+  [
+    "Model Distillation",
+    "KV Cache Optimization",
+    "Edge AI",
+    "Offline Inference",
+    "Python",
+    "LLM Engineering",
+  ]
+github: ""
+demo: ""
+date: "2026-03"
+featured: true
+---
+
+Compact 2B-parameter reasoning model shaped through multi-teacher distillation from advanced reasoning systems (Llama 4 family, Opus-class reasoning chains). Built for offline-first education — runs on CPU-only devices with zero internet dependency. Later adopted as the reasoning backbone of the AIME learning platform.
+
+Trained not on answers but on how answers are formed — merging diverse reasoning styles into a single deliberate, explainable model small enough for a Raspberry Pi.
+
+### Key Capabilities
+
+- **Think Cache**: Pre-warmed KV cache reasoning prefix baked into the model before inference begins — enables consistent, fast first-token response without per-query warm-up across any device
+- **Think Book**: Structured offline knowledge bundles authored by teachers locally and deployable via USB — contains curated problem sets, subject-specific reasoning traces, and adaptive difficulty scaffolding
+- **Fully Offline Tutoring**: Think Cache + Think Book together enable a complete AI tutoring infrastructure with zero connectivity — no API calls, no latency, no subscriptions, no data leaving the room
+- **CPU-Only Inference**: Runs on laptops, old Android tablets, and Raspberry Pi — no GPU or cloud connection required
+- **Multi-Teacher Distillation**: Reasoning behaviors distilled from multiple advanced models and compressed into a single coherent 2B-parameter model with consistent reasoning posture
+- **Explainable Reasoning**: Every response shows its reasoning chain step by step, not just the conclusion — designed for students who learn best when the thinking is visible
